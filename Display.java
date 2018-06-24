@@ -121,5 +121,9 @@ public class Display extends JComponent {
             }
         }
         System.out.println("drawing complete");
+        
+        BufferedImage bufferedImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+        for(int r=0
+        
     }
 }
