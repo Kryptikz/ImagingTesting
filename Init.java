@@ -10,7 +10,7 @@ public class Init {
             //frame.setVisible(true);
             //frame.setSize(1000,1000);
             //Display d = new Display(1000,1000);
-            String FILENAME = "fractal";
+            String FILENAME = "noise";
             String EXTENSION = ".jpg";
             File f = new File(FILENAME+EXTENSION);
             BufferedImage image = ImageIO.read(f);
@@ -51,7 +51,7 @@ public class Init {
                 }
             }
             BufferedImage out = d.getOut();
-            while(true) {
+            /*while(true) {
                 d.setImage(out);
                 d.redraw(1);
                 out = d.getOut();
@@ -61,14 +61,14 @@ public class Init {
                     e.printStackTrace();
                 }
             }
+            */
             
-            /*
             File output = new File(FILENAME + "_out" + EXTENSION);
             System.out.println("output image width: " + out.getWidth());
             System.out.println("output image height: " + out.getHeight());
             ImageIO.write(out,EXTENSION.substring(1),output);
             System.out.println("image writing complete");
-            */
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
