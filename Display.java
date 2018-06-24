@@ -101,7 +101,7 @@ public class Display extends JComponent {
                 //g.fillRect(c,r,1,1);
                 vals[r][c]=av;
             }
-            System.out.println((((double)r/(double)HEIGHT)*100) + "% complete with distance calculations");
+            System.out.println((((double)((int)(((((double)r/(double)colorList.length)*100))*100)))/100) + "% complete with distance calculations");
         }
         System.out.println("distance heatmap data generated");
         double maxav = 0;
@@ -112,7 +112,7 @@ public class Display extends JComponent {
                 }
             }
         }
-        System.out.println("maxmimum calculation complete");
+        System.out.println("maximum calculation complete");
         for(int r=0;r<vals.length;r++) {
             for(int c=0;c<vals[0].length;c++) {
                 g.setColor(new Color(0,(int)(vals[r][c]/maxav*255),0));
@@ -122,8 +122,31 @@ public class Display extends JComponent {
         }
         System.out.println("drawing complete");
         
-        BufferedImage bufferedImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-        for(int r=0
+        BufferedImage out = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+        for(int r=0;r<vals.length;r++) {
+            for(int c=0;c<vals[0].length;c++) {
+                try {
+                    out.setRGB(r, c, (new Color(0,(int)(vals[r][c]/maxav*255),0)).getRGB());
+                } catch (Exception e) {
+                }
+            }
+        }
+        System.out.println("output image generated");
+        af=out;
         
     }
+    public BufferedImage getOut() {
+        return af;
+    }
+    public boolean genComplete() {
+        if(af==null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public void setImage(BufferedImage image) {
+        im=image;
+    }
+        
 }
